@@ -10,8 +10,8 @@ const app = express();
 
 // 1. Define the list of allowed frontend origins (whitelist)
 const allowedOrigins = [
-  'http://localhost:3000', // Your local React app
-  'https://YOUR_NETLIFY_SITE_NAME.netlify.app' // The live Netlify URL (you will replace this placeholder later)
+  'http://localhost:3000',
+  'https://mas-rebuilt.netlify.app/' 
 ];
 
 // 2. Set up CORS options

@@ -1,0 +1,74 @@
+.welcome-background {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.welcome-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #f39c12, #8e44ad);
+    -webkit-mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 15px);
+    mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 15px);
+}
+
+.welcome-card {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 50px 60px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+}
+
+.welcome-title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.welcome-subtitle {
+    font-size: 1.2em;
+    font-weight: 300;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.welcome-description {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    color: #eee;
+}
+
+.welcome-start-button {
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.welcome-start-button:hover {
+    background-color: #9b59b6;
+    transform: translateY(-2px);
+}

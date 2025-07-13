@@ -1,0 +1,58 @@
+const express = require('express');
+const router = express.Router();
+const Papa = require('papaparse');
+
+// Import our models
+const Classroom = require('../models/Classroom');
+const Assignment = require('../models/Assignment');
+
+// This function converts database documents back into a CSV string
+const arrayToCsv = (data, columns) => {
+    const jsonData = data.map(doc => doc.toObject());
+    return Papa.unparse(jsonData, { columns });
+};
+
+// --- ROUTE 1: GET /api/data/school-data ---
+router.get('/school-data', async (req, res) => {
+
+});
+
+
+// --- ROUTE 2: POST /api/data/upload ---
+router.post('/upload', async (req, res) => {
+    
+    // DEBUG CHECKPOINT 1
+    console.log('Request Body Received:', req.body);
+
+    const { classroomsCsv, assignmentsCsv } = req.body;
+
+    if (!classroomsCsv || !assignmentsCsv) {
+        return res.status(400).json({ message: 'Missing CSV data.' });
+    }
+
+    try {
+        // DEBUG CHECKPOINT 2
+        const classroomData = Papa.parse(classroomsCsv, { header: true, skipEmptyLines: true }).data;
+        const assignmentData = Papa.parse(assignmentsCsv, { header: true, skipEmptyLines: true }).data;
+        console.log('Parsed Classroom Data:', classroomData);
+        console.log('Parsed Assignment Data:', assignmentData);
+
+        console.log('Clearing old data from database...');
+        await Classroom.deleteMany({});
+        await Assignment.deleteMany({});
+
+        console.log('Inserting new data...');
+        await Classroom.insertMany(classroomData);
+        await Assignment.insertMany(assignmentData);
+
+        console.log('Data upload successful!');
+        res.status(200).json({ message: 'Data uploaded and updated successfully!' });
+
+    } catch (err) {
+        console.error('Error during data upload:', err);
+        res.status(500).json({ message: 'Failed to update database.' });
+    }
+});
+
+
+module.exports = router;

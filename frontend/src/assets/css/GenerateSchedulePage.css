@@ -1,0 +1,14 @@
+.mainback {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #535252;
+    z-index: -2;
+}
+.back {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}

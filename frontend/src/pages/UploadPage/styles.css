@@ -1,0 +1,221 @@
+.upload-page-container {
+    min-height: calc(100vh - 61px);
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #1a1a1a;
+    position: relative;
+    z-index: 0;
+}
+
+.upload-page-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #f39c12, #8e44ad);
+    -webkit-mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 15px);
+    mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 15px);
+}
+
+.upload-card {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    max-width: 900px; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.upload-card h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.upload-card p {
+    color: #ccc;
+    margin: 0;
+}
+
+.instructions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.format-box {
+    flex: 1;
+    background-color: #1c1e22;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.format-box h3 {
+    margin-top: 0;
+    color: #8e44ad;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.format-box ul {
+    padding-left: 20px;
+    margin: 0 0 15px 0;
+}
+
+.format-box li {
+    margin-bottom: 5px;
+}
+
+.format-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9em;
+    background-color: #2b2d2f;
+}
+
+.format-box th, .format-box td {
+    border: 1px solid #555;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.format-box th {
+    background-color: rgba(142, 68, 173, 0.4);
+    font-weight: bold;
+}
+
+.format-box .warning {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #aaa;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .instructions-container {
+        flex-direction: column;
+    }
+}
+
+.file-input-wrapper {
+    background-color: #1c1e22;
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-input-wrapper:hover {
+    background-color: #333;
+    border-color: #8e44ad;
+}
+
+.file-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.file-input-label {
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.file-name {
+    color: #5CFF5C;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.settings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.iterations-selector,
+.algorithm-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid #444;
+    flex: 1;
+    min-width: 250px;
+}
+
+.iterations-selector label,
+.algorithm-selector label {
+    font-weight: 500;
+}
+
+.iterations-selector select,
+.algorithm-selector select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.generate-button {
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.generate-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.generate-button:hover:not(:disabled) {
+    background-color: #9b59b6;
+    transform: translateY(-2px);
+}
+
+.status-message {
+    margin-top: 0;
+    font-size: 1.1em;
+    min-height: 1.2em;
+}
+
+.status-error {
+    color: #FF5C5C;
+}
